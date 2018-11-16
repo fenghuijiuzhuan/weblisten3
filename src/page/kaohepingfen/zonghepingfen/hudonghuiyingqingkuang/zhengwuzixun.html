@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <script src="/lib/require-2.1.11.min.js"></script>
+  <script src="/frame/echarts-2.2.7/dist/echarts.js"></script>
+</head>
+<body>
+  <!-- 哎呀 什么都没有 -->
+<script>
+require(['/src/config/require.config.js'], function () {
+  require(['/src/js/content_iframe.js', 'echarts/chart/bar'], function (Moo) {
+    var body = Moo.body,
+      bread = Moo.bread,
+      bodytitle = Moo.bodytitle,
+      panel = Moo.panel,
+      ec = Moo.ec;
+    // main body
+    var bod = body.create().appendTo($('.wping-body'));
+    bod.eq(1).css({
+      top: 0, 
+      left: 0,
+      bottom: 0
+    })
+    var main = bod.find('.wping-bodymain');
+    var content = bod.find('.wping-bodycontent');
+    
+    // bread
+    // bread.create(bod, [{title: '全媒体采编',}, {title: '已签发平台',}])
+
+    // search-from
+    // search.create(main)
+    bodytitle.create(content, {title: '政务咨询'})
+
+    var panelIBox_1 = {
+      title: '扣分情况',
+      body: 'num:-1',
+      isTmp: true
+    }
+    panel.create(content, panelIBox_1, function (dom) {
+      dom.css({
+    		display: 'inline-block',
+    		'vertical-align': 'top',
+    		width: '32%',
+        height:'200px',
+        marginRight: '1%'
+    	})
+    });
+
+    
+    var panelIBox_2 = {
+      title: '考察点',
+      body: '<p>1.渠道建设情况；</p><p>2.栏目使用情况。</p>'
+    }
+    panel.create(content, panelIBox_2, function(dom){
+    	dom.css({
+    		display: 'inline-block',
+    		'vertical-align': 'top',
+    		width: '32%',
+        height:'200px',
+        marginRight: '1%'
+    	})
+    })
+
+    var panelIBox_3 = {
+      title: '考核标准',
+      body: '<p>1.未开设栏目的，扣<span style="color: #fb3f00;">5分</span>；</p><p>2.2.开设了栏目，但监测时间点前1年内栏目中无任何有效信件、留言的，扣<span style="color: #fb3f00;">5分</span>；</p>'
+
+    }
+    panel.create(content, panelIBox_3, function(dom){
+    	dom.css({
+    		display: 'inline-block',
+    		'vertical-align': 'top',
+    		width: '34%',
+        height:'200px'
+    	})
+    })
+
+
+    var panelParam = {
+      title: '扣分情况分析',
+      body: '<div class="main-table"><div></div></div>',
+    }
+    panel.create(content, panelParam, function (dom) {
+      // table
+      var div = dom.find('.main-table div');
+      layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+          elem: div,
+          height: 'auto',
+          url: '/testdata/zonghepingfen/hudonghuiyingqingkuang/zhengwuzixun.json', //数据接口
+          // page: true, //开启分页
+          cols: [[ //表头
+            {field: 'id', title: '序号', width:"10%", sort: true},
+            {field: 'time', title: '互动时间',sort: true,width:"20%"},
+            {field: 'kind', title: '所属栏目', width:"20%"},
+            {field: 'title', title: '标题',width:""}
+          ]]
+        });
+      });
+    })
+
+
+
+  });
+  
+})
+
+
+</script>
+</body>
+</html>

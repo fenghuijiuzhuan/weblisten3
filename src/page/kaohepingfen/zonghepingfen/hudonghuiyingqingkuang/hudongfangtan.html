@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <script src="/lib/require-2.1.11.min.js"></script>
+  <script src="/frame/echarts-2.2.7/dist/echarts.js"></script>
+</head>
+<body>
+  <!-- 哎呀 什么都没有 -->
+<script>
+require(['/src/config/require.config.js'], function () {
+  require(['/src/js/content_iframe.js', 'echarts/chart/bar'], function (Moo) {
+    var body = Moo.body,
+      bread = Moo.bread,
+      bodytitle = Moo.bodytitle,
+      panel = Moo.panel,
+      ec = Moo.ec;
+    // main body
+    var bod = body.create().appendTo($('.wping-body'));
+    bod.eq(1).css({
+      top: 0, 
+      left: 0,
+      bottom: 0
+    })
+    var main = bod.find('.wping-bodymain');
+    var content = bod.find('.wping-bodycontent');
+    
+    // bread
+    // bread.create(bod, [{title: '全媒体采编',}, {title: '已签发平台',}])
+
+    // search-from
+    // search.create(main)
+    bodytitle.create(content, {title: '互动访谈'})
+
+    var panelIBox_1 = {
+      title: '当前扣分情况',
+      body: 'num:-1',
+      isTmp: true
+    }
+    panel.create(content, panelIBox_1, function (dom) {
+      dom.css({
+    		display: 'inline-block',
+    		'vertical-align': 'top',
+    		width: '32%',
+        height:'200px',
+        marginRight: '1%'
+    	})
+    });
+
+    
+    var panelIBox_2 = {
+      title: '考察点',
+      body: '互动回应类栏目长期未回应的情况。'
+    }
+    panel.create(content, panelIBox_2, function(dom){
+    	dom.css({
+    		display: 'inline-block',
+    		'vertical-align': 'top',
+    		width: '32%',
+        height:'200px',
+        marginRight: '1%'
+    	})
+    })
+
+    var panelIBox_3 = {
+      title: '考核标准',
+      body: '监测1周，每天间隔性访问<span style="color: #fb3f00;">20次</span>以上，超过（含）15秒网站仍打不开的次数比例累计超过（含）<span style="color: #fb3f00;">5%</span>，即单项否决。'
+    }
+    panel.create(content, panelIBox_3, function(dom){
+    	dom.css({
+    		display: 'inline-block',
+    		'vertical-align': 'top',
+    		width: '34%',
+        height:'200px'
+    	})
+    })
+
+
+    var panelParam = {
+      title: '扣分情况分析',
+      body: '<div class="main-chart"></div><div class="main-table"><div></div></div>',
+    }
+    panel.create(content, panelParam, function (dom) {
+      var div = dom.find('.main-chart')
+      div.height(400);
+      var myChart = ec.init(div[0]);
+      var option = {
+        title : {
+          text: '最近一年互动访谈次数',
+        },
+        tooltip: {
+            show: true,
+            trigger: 'axis'
+        },
+        legend: {
+            data:['近一年互动访谈次数'],
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ["在线访谈"]
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                "name":"更新条数",
+                "type":"bar",
+                "data":[1.0, 2],
+                "barWidth": 30,
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ],
+                    itemStyle: {
+                      normal: {
+                        color: '#c23531'
+                      }
+                    }
+                },
+                itemStyle:{
+                    normal:{
+                        color:'#c23531'
+                    }
+                }
+            }
+        ]
+      };
+      myChart.setOption(option);
+
+      // table
+      var div2 = dom.find('.main-table div');
+      layui.use('table', function(){
+        var table = layui.table;
+        
+        //第一个实例
+        table.render({
+          elem: div2,
+          height: 'auto',
+          url: '/testdata/zonghepingfen/hudonghuiyingqingkuang/hudongfangtan.json', //数据接口
+          cols: [[ //表头
+            {field: 'id', title: '序号', width:"10%", sort: true},
+            {field: 'time', title: '互动时间',sort: true,width:"20%"},
+            {field: 'kind', title: '所属栏目', width:"20%", sort: true},
+            {field: 'title', title: '标题',width:""}
+          ]]
+        });
+      });
+    })
+
+    
+
+
+
+  });
+  
+})
+
+
+</script>
+</body>
+</html>

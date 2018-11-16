@@ -66,21 +66,42 @@ require(['/src/config/require.config.js'], function () {
         })
       })
 
-      titlebox.find('button.addrow').on('click', function (param) {
-        layui.use('layer', function(){
-          var layer = layui.layer;
-          layer.open({
-            type: 1,
-            content: 111
+      require(['addcolumn'], function (addcolumn) {
+        addcolumn(null, {}, function (dom) {
+          layui.use('form', function(){
+            var form = layui.form;
+            form.on('submit(formDemo)', function(data){
+              // layer.msg(JSON.stringify(data.field));
+              form.reset('addColumn');
+              return false;
+            });
           });
-        });              
           
+          titlebox.find('button.addrow').on('click', function (param) {
+            layui.use('layer', function(){
+              var layer = layui.layer;
+              layer.open({
+                type: 1,
+                area: ['600px'],
+                content: dom,
+                success: function (layero, index) {
+                  dom.find('.wping-form-cancel').on('click', function () {
+                    layer.close(index)
+                  })
+                  dom.find('.wping-from-test').on('click', function () {
+                    // layer.close(index)
+                  })
+                }
+              });
+            });
+          })
+
+        })
+
+        
       })
 
     })
-
-
-
   })
 })
 </script>

@@ -19,11 +19,17 @@ define(['util/onloadpage'], function(loadpage) {
               loadpage($(this).attr('href2'), hasTree)
             })
           })
-          // var aArr = dom.find('a');
-          dom.find('a.first:eq(0)').one('click', function (e) {
+          var aArr = dom.find('a');
+          aArr.on('click', function () { return false });
+          (function (e) {
             loadpage($(this).attr('href2'), ($(this).attr('addtree') === 'true'))
+            $(this).parent('dd,li').addClass('layui-this');
             return false;
-          }).trigger('click').parent('dd,li').addClass('layui-this');
+          }).call(dom.find('a.first:eq(0)'))
+          // dom.find('a.first:eq(0)').off('click').one('click', function (e) {
+          //   loadpage($(this).attr('href2'), ($(this).attr('addtree') === 'true'))
+          //   return false;
+          // }).trigger('click').parent('dd,li').addClass('layui-this');
         }
       })
     })

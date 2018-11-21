@@ -1,4 +1,4 @@
-define(['text!tpl/addcolumn.html'], function(html) {
+define(['text!tpl/addcolumn.js'], function(html) {
   'use strict';
   function addcolumn(ele, data, callback) {
     var box = ele || $('body');

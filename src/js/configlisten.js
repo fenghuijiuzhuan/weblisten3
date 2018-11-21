@@ -1,6 +1,6 @@
 require(['/src/config/require.config.js'], function () {
   require(['incloude'], function () {
-    require(['jquery', 'layui', 'menu', 'body'], function ($1, $2, menu, body) {
+    require(['menu', 'body'], function (menu, body) {
 
       var menulist = {
         list: [
@@ -10,7 +10,7 @@ require(['/src/config/require.config.js'], function () {
             children: []
           }, {
             text: '首页栏目添加',
-            src: 'javascript:;',
+            src: '/src/page/lanmupeizhi/indexaddcolm.html',
             children: []
           }
         ]

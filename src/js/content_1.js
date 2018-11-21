@@ -1,6 +1,6 @@
 require(['/src/config/require.config.js'], function () {
   require(['incloude'], function () {
-    require(['jquery', 'layui', 'menu', 'body'], function ($1, $2, menu, body) {
+    require(['menu', 'body'], function (menu, body) {
       // menu
       menu.create($('body'))
   

@@ -87,10 +87,31 @@ require(['/src/config/require.config.js'], function () {
                 success: function (layero, index) {
                   dom.find('.wping-form-cancel').on('click', function () {
                     layer.close(index)
-                  })
-                  dom.find('.wping-from-test').on('click', function () {
-                    // layer.close(index)
-                  })
+                  });
+                  // dom.find('.wping-from-test').on('click', function () {
+                  //   layer.open({
+                  //     type: 1,
+                  //     title: '测试',
+                  //     area: ['600px', '260px'],
+                  //     shade: .1,
+                  //     maxmin: true,
+                  //     content: '//layer.layui.com/test/settop.html',
+                  //     btn: ['继续', '关闭'],
+                  //     yes: function(){
+                  //       $(that).click(); 
+                  //     },
+                  //     btn2: function(index){
+                  //       layer.close(index);
+                  //     },
+                  //     zIndex: layer.zIndex,
+                  //     success: function(layero){
+                  //       layer.setTop(layero); //重点2
+                  //     }
+                  //   });
+                  // })
+                },
+                end: function () {
+                  dom.find('.wping-from-test','.wping-form-cancel').off('click')
                 }
               });
             });

@@ -14,7 +14,7 @@ define([], function() {
           resultNext(result);
           function resultNext(result){
             var dom = $(result).appendTo($('body'));
-            NowMOD.add('index', dom)
+            window.menagger && NowMOD.add('body', dom)
             var tablebox = dom.find('#wping-index-table')
             // tablebox.find('#wping-table-body')
 
@@ -53,14 +53,15 @@ define([], function() {
           resultNext(result);
           function resultNext(result){
             var dom = $(result).appendTo($('body'));
-            NowMOD.add('index', dom)
+            window.menagger && NowMOD.add('body', dom)
           }
         })
       })
     },
     fn: function (param) {
-      var h = window.location.hash;
-      if(h.slice(1)=='user'){
+      // var h = window.location.hash;
+      // if(h.slice(1)=='user'){
+      if(param){
         this['indexUser'](param)
       }else{
         this['indexAll'](param)

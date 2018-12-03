@@ -8,7 +8,7 @@
   </a>
   <ul class="layui-nav pull-left" lay-filter="header-nav">
     {{# layui.each(d.list, function (index, item) {  }}
-      <li class="layui-nav-item {{ d.router == item.src ? 'layui-this' : '' }}"><a href="#{{ item.src }}">{{ item.text }}</a></li>
+      <li class="layui-nav-item {{ d.router == item.src ? 'layui-this' : '' }}"><a href="javascript:;" href2="#{{ item.src }}">{{ item.text }}</a></li>
     {{# }) }}
   </ul>
   <ul class="layui-nav pull-right">

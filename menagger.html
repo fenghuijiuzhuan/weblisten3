@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ch">
+<html lang="en">
 <head>
   <title>首页</title>
   <meta charset="UTF-8">
@@ -15,20 +15,19 @@
   <link rel="stylesheet" href="/src/static/css/index.css">
 </head>
 <body>
-  <!-- 哎呀 什么都没有 -->
 <script>
 require(['/src/config/require.config.js'], function () {
-  require(['/src/js/content_iframe.js', 'index', 'echarts/chart/bar', 'echarts/chart/pie'], function (Moo, index) {
+  require(['/src/js/content_iframe.js', '/src/router/index.js'], function (Moo, router) {
     var body = Moo.body,
       bread = Moo.bread,
       bodytitle = Moo.bodytitle,
       panel = Moo.panel,
       ec = Moo.ec;
-    // main body
-    index()
+      
+    // console.log(nowModel)
+    nowModel.router.chuand('index')
   })
 })
-    
-  </script>
+</script>
 </body>
 </html>

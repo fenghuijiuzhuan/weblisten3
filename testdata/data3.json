@@ -1,0 +1,55 @@
+[
+    {
+      "id": 1,
+      "name": "zzz",
+      "open": true,
+      "children": [
+        {
+          "id": 2,
+          "name": "1",
+          "open": false,
+          "checked": true
+        },
+        {
+          "id": 3,
+          "name": "2",
+          "open": false,
+          "checked": true
+
+        },
+        {
+          "id": 17,
+          "name": "3z",
+          "open": false,
+          "checked": true
+        }
+      ],
+      "checked": true
+    },
+    {
+      "id": 4,
+      "name": "评论",
+      "open": false,
+      "children": [
+        {
+          "id": 5,
+          "name": "留言列表",
+          "open": false,
+          "checked": false
+        },
+        {
+          "id": 6,
+          "name": "发表留言",
+          "open": false,
+          "checked": false
+        },
+        {
+          "id": 333,
+          "name": "233333",
+          "open": false,
+          "checked": false
+        }
+      ],
+      "checked": false
+    }
+  ]

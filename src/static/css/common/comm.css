@@ -12,6 +12,7 @@
 .wping-header .layui-nav li{}
 .layui-nav .layui-this:after,.layui-nav-bar{background-color: #FFFFFF}
 .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this{background-color: transparent}
+.wping-nav-right.layui-nav .layui-nav-child dd.layui-this a, .wping-nav-right .layui-nav-child dd.layui-this{background-color: #094AA1}
 .layui-nav-child{top: 70px}
 .wping-header .layui-nav .layui-nav-item.layui-this{background-color: #FFF;color: #094AA1;border-radius: 10px 10px 0 0;}
 .wping-header .layui-nav .layui-nav-item.layui-this a{color: #094AA1;}

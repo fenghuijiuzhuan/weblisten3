@@ -1,6 +1,7 @@
 define(['util/globparam'], function(globparam) {
   'use strict';
   function loadPage(src, a){
+    $('#pageJsave').remove();
     var reg = new RegExp("(javascript\:\;)", "g")
     if(!reg.test(src)){
       if(globparam(src, true)){

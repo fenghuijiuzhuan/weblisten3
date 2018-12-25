@@ -11,8 +11,8 @@ define([], function() {
   };
   // BTNCOLOR 
   function getBtn(param) {
-    var def = {name: 'DEFAULT', text: '', size: 'layui-btn-sm', style: '', event: ''}
-    param = $.extend({}, def, param)
+    var def = {name: 'DEFAULT', text: '', size: 'layui-btn-sm', style: '', event: ''};
+    param = $.extend({}, def, param);
     
     var tmp = btn[param.name];
     tmp = tmp.replace(/(BTNTEXT)/g, param.text);

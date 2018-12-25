@@ -2,7 +2,6 @@ define([
   'jquery',
   // 'layui',
   '/src/js/layui_kz.js',
-  '/src/router/index.js',
   'util/formatDate',
   'body',
   'bread',
@@ -13,7 +12,7 @@ define([
   'createChart',
   'createChartTable',
   'createChartTableAll'
-], function($1, $2, $3, $4, body, bread, bodytitle, panel, search, ec, createChart, createChartTable, createChartTableAll) {
+], function($1, $2, $3, body, bread, bodytitle, panel, search, ec, createChart, createChartTable, createChartTableAll) {
   'use strict';
   return {
     body: body,

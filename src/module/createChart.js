@@ -2,21 +2,19 @@ define(['panel'], function(panel) {
   'use strict';
 
   var defaultData = {
-    text: '最近2周动态、要闻更新情况',
+    text: '更新情况',
     height: 400,
     url: '',
-    data: {},
-    nameData: ['部门动态','基层动态','今日头条','今日达拉','各镇各部门最新公开','旗政府最新公开信息'],
-    countData: [9,8,7,9,0,0],
-    urlData: []
-  }
+    api: 'chartlist',
+    data: {}
+  };
   function createTable(ec,data) {
     var _data = $.extend({}, defaultData, data);
     var panelTable = {
       body: '<div class="main-chart"></div>',
     };
     panel.create(_data.content, panelTable, function(dom){
-      var div = dom.find('.main-chart')
+      var div = dom.find('.main-chart');
       div.height(400);
       var myChart = ec.init(div[0]);
       var option = {
@@ -74,28 +72,36 @@ define(['panel'], function(panel) {
             }
         ]
     };
-      if(_data.url){
-        $.post(_data.url, _data.data, function (edata) {
+
+        $.post(''+_data.url+_data.api, _data.data, function (edata) {
+        	if(typeof edata.cname == 'string'){
+        		var cname = JSON.parse(edata.cname);
+        		var csum = JSON.parse(edata.csum);
+        	}else{
+        		var cname = edata.cname;
+        		var csum = edata.csum;
+        	}
+        	var ctname = edata.ctname;
+        	
+        	
+        	
           var _option = {
             title: {
-              text: _data.text,
+              text: ctname||_data.text,
             },
             xAxis: [
               {
-                  data: _data.nameData
+                  data: cname
               }
             ],
             series: [
               {
-                  data: _data.countData,
+                  data: csum,
               }
             ]
           }
           myChart.setOption($.extend(true, {}, option, _option));
         }, 'json')
-      }else{
-        myChart.setOption(option);
-      }
       
     })
     
